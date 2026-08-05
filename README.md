@@ -1,0 +1,2 @@
+# NindyCantik
+cinta itu baik
