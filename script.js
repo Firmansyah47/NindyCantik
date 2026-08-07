@@ -18,19 +18,19 @@ const galeri = [
         teks: "Ini foto kita pas pertama kali ketemu di lumber 😭, Kamu masi inget kan HAHAHAH :)"
     },
     {
-        gambar: "https://raw.githubusercontent.com/Firmansyah47/NindyCantik/main/Lumber1.jpg", 
+        gambar: "https://raw.githubusercontent.com/Firmansyah47/NindyCantik/main/.jpg", 
         teks: "Ini juga foto pas kamu maksa aku main ff 😭, padahal aku gengsi aja kalo bukan karna kamu aku gabakalan maen 🥰"
     },
     {
-        gambar: "https://raw.githubusercontent.com/Firmansyah47/NindyCantik/main/Lumber1.jpg", 
+        gambar: "https://raw.githubusercontent.com/Firmansyah47/NindyCantik/main/.jpg", 
         teks: ""Ini salah satu foto yang bikin aku naksir kamu, dari awal liat ini itu, kamu keliatan cantik banget aku suka idung kamu, rambut, semuanya deh hehee. kamu cantik sekali sayaang ♡´･ᴗ･`♡"l
     },
     {
-        gambar: "https://raw.githubusercontent.com/Firmansyah47/NindyCantik/main/Lumber1.jpg", 
+        gambar: "https://raw.githubusercontent.com/Firmansyah47/NindyCantik/main/.jpg", 
         teks: ""Serius kamu dulu suka sama aku 😭, padahal aku ga pd tau, liat aja deh bocah ingusan ini dapet cewe nya se cantik bidadari :)"
     },
     {
-        gambar: "https://raw.githubusercontent.com/Firmansyah47/NindyCantik/main/Lumber1.jpg", 
+        gambar: "https://raw.githubusercontent.com/Firmansyah47/NindyCantik/main/.jpg", 
         teks: ""
     }
 ];
