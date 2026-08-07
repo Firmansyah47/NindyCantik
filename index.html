@@ -1,1 +1,278 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Anniversary!</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #050510;
+            color: white;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            position: relative;
+        }
+
+        /* Animasi Bintang Latar Belakang */
+        .stars {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background: transparent;
+        }
+        
+        .star {
+            position: absolute;
+            background-color: white;
+            border-radius: 50%;
+            animation: twinkle infinite ease-in-out;
+        }
+
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.2; transform: scale(0.8); }
+            50% { opacity: 1; transform: scale(1.2); }
+        }
+
+        /* Container Utama */
+        .screen {
+            display: none; /* Disembunyikan secara default */
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            animation: fadeIn 1s ease-in;
+            width: 90%;
+            max-width: 400px;
+        }
+
+        .screen.active {
+            display: flex;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Tampilan Layar Login (PIN) */
+        .pin-box {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 30px;
+            border-radius: 15px;
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .pin-box h2 {
+            margin-bottom: 20px;
+            font-size: 1.2rem;
+            letter-spacing: 1px;
+        }
+
+        .pin-input {
+            width: 150px;
+            padding: 10px;
+            font-size: 2rem;
+            text-align: center;
+            letter-spacing: 10px;
+            border: none;
+            border-bottom: 2px solid white;
+            background: transparent;
+            color: white;
+            outline: none;
+            margin-bottom: 20px;
+        }
+
+        .btn {
+            background: white;
+            color: #050510;
+            padding: 10px 25px;
+            border: none;
+            border-radius: 25px;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .btn:hover {
+            background: #e0e0e0;
+            transform: scale(1.05);
+        }
+
+        /* Tampilan Galeri Foto (Polaroid) */
+        .polaroid {
+            background: white;
+            padding: 15px 15px 25px 15px;
+            border-radius: 5px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+            margin-bottom: 25px;
+            width: 100%;
+        }
+
+        .polaroid img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            border-radius: 3px;
+        }
+
+        .polaroid p {
+            color: #333;
+            margin-top: 15px;
+            font-size: 1.1rem;
+            font-style: italic;
+        }
+
+        /* Tampilan Akhir (Roket & Teks) */
+        .rocket {
+            font-size: 4rem;
+            margin-bottom: 20px;
+            animation: flyUp 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes flyUp {
+            from { transform: translateY(0); }
+            to { transform: translateY(-30px); }
+        }
+
+        .final-text {
+            font-size: 1.8rem;
+            color: #ffd700;
+            text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+            line-height: 1.4;
+        }
+
+    </style>
+</head>
+<body>
+
+    <!-- Latar Belakang Bintang -->
+    <div class="stars" id="stars-container"></div>
+
+    <!-- Layar 1: Masukkan PIN -->
+    <div id="screen-login" class="screen active">
+        <div class="pin-box">
+            <h2>Masukkan Kode Rahasia Kita</h2>
+            <!-- maxLength 4 untuk membatasi 4 digit -->
+            <input type="text" id="pin-input" class="pin-input" maxlength="4" placeholder="••••">
+            <br>
+            <button class="btn" onclick="checkPin()">Buka</button>
+            <p id="error-msg" style="color: #ff4d4d; margin-top: 10px; font-size: 0.9rem; display: none;">Kodenya salah, coba ingat-ingat lagi!</p>
+        </div>
+    </div>
+
+    <!-- Layar 2: Galeri Foto -->
+    <div id="screen-gallery" class="screen">
+        <div class="polaroid">
+            <img id="gallery-img" src="" alt="Foto Kita">
+            <p id="gallery-text"></p>
+        </div>
+        <button class="btn" onclick="nextPhoto()">Next ➔</button>
+    </div>
+
+    <!-- Layar 3: Akhir (Roket & Ucapan) -->
+    <div id="screen-final" class="screen">
+        <div class="rocket">🚀</div>
+        <h1 class="final-text">Happy Anniversary<br>13 Agustus! ❤️</h1>
+    </div>
+
+    <script>
+        // ==========================================
+        // BAGIAN YANG BISA KAMU EDIT
+        // ==========================================
+        
+        // 1. Ubah PIN sesuai tanggal lahir kalian (misal: 01 Januari dan 01 November = "0111")
+        const KODE_PIN = "0111";
+
+        // 2. Masukkan foto dan teks yang mau ditampilkan
+        // Pastikan file foto (misal: foto1.jpg) ada di satu folder dengan file html ini
+        const galeri = [
+            {
+                gambar: "foto1.jpg", 
+                teks: "Awal cerita kita dimulai..."
+            },
+            {
+                gambar: "foto2.jpg", 
+                teks: "Momen lucu pas kita jalan bareng."
+            },
+            {
+                gambar: "foto3.jpg", 
+                teks: "Makasih udah nemenin aku setahun ini ya!"
+            }
+        ];
+
+        // ==========================================
+        // LOGIKA PROGRAM (Gak usah diubah)
+        // ==========================================
+        
+        let currentPhotoIndex = 0;
+
+        // Fungsi Bikin Bintang di Background
+        function createStars() {
+            const starsContainer = document.getElementById('stars-container');
+            for (let i = 0; i < 100; i++) {
+                const star = document.createElement('div');
+                star.className = 'star';
+                star.style.width = Math.random() * 3 + 'px';
+                star.style.height = star.style.width;
+                star.style.left = Math.random() * 100 + '%';
+                star.style.top = Math.random() * 100 + '%';
+                star.style.animationDuration = (Math.random() * 3 + 2) + 's';
+                starsContainer.appendChild(star);
+            }
+        }
+        createStars();
+
+        // Fungsi Cek PIN
+        function checkPin() {
+            const input = document.getElementById('pin-input').value;
+            if (input === KODE_PIN) {
+                document.getElementById('screen-login').classList.remove('active');
+                tampilkanFoto();
+                document.getElementById('screen-gallery').classList.add('active');
+            } else {
+                document.getElementById('error-msg').style.display = 'block';
+            }
+        }
+
+        // Fungsi Tampilkan Foto
+        function tampilkanFoto() {
+            document.getElementById('gallery-img').src = galeri[currentPhotoIndex].gambar;
+            document.getElementById('gallery-text').innerText = galeri[currentPhotoIndex].teks;
+        }
+
+        // Fungsi Tombol Next
+        function nextPhoto() {
+            currentPhotoIndex++;
+            
+            // Kalau foto masih ada, lanjut ke foto berikutnya
+            if (currentPhotoIndex < galeri.length) {
+                // Efek animasi simpel pas ganti foto
+                const galleryScreen = document.getElementById('screen-gallery');
+                galleryScreen.style.animation = 'none';
+                galleryScreen.offsetHeight; /* trigger reflow */
+                galleryScreen.style.animation = null; 
+                
+                tampilkanFoto();
+            } 
+            // Kalau foto udah habis, ke layar roket
+            else {
+                document.getElementById('screen-gallery').classList.remove('active');
+                document.getElementById('screen-final').classList.add('active');
+            }
+        }
+    </script>
+</body>
+</html>
 
