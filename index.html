@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Anniversary!</title>
+    
+    <!-- Menghubungkan ke file CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Latar Belakang Bintang & Love -->
+    <div class="stars" id="stars-container"></div>
+    <div class="hearts-container" id="hearts-container"></div>
+
+    <!-- Layar 1: PIN -->
+    <div id="screen-login" class="screen active">
+        <div class="pin-box">
+            <h2>Masukkan Kode Rahasia Kita</h2>
+            <input type="text" id="pin-input" class="pin-input" maxlength="4" placeholder="••••">
+            <br>
+            <button class="btn" onclick="checkPin()">Buka</button>
+            <p id="error-msg" style="color: #ff4d4d; margin-top: 10px; font-size: 0.9rem; display: none;">Kodenya salah sayang, coba inget lagi!</p>
+        </div>
+    </div>
+
+    <!-- Layar 2: Galeri Foto -->
+    <div id="screen-gallery" class="screen">
+        <div class="polaroid">
+            <img id="gallery-img" src="" alt="Foto Kita">
+            <p id="gallery-text"></p>
+        </div>
+        <button class="btn" onclick="nextPhoto()">Next ➔</button>
+    </div>
+
+    <!-- Layar 3: Animasi Jarak -->
+    <div id="screen-distance" class="screen">
+        <div class="distance-card">
+            <h2>Jarak Bukan Penghalang ❤️</h2>
+            
+            <div class="location-box">
+                <div>
+                    <div class="city-icon">📍</div>
+                    <div class="city" id="nama-kota-kamu">KOTA KAMU</div>
+                </div>
+
+                <div class="line-wrapper">
+                    <div class="moving-heart">💖</div>
+                </div>
+
+                <div>
+                    <div class="city-icon">📍</div>
+                    <div class="city" id="nama-kota-dia">KOTA DIA</div>
+                </div>
+            </div>
+
+            <div class="distance-count" id="distance-number">0 KM</div>
+            <p class="distance-quote" id="pesan-jarak">UBAH PESAN JARAK INI</p>
+        </div>
+        <button class="btn" onclick="goToFinal()">Lanjut Ke Ucapan 🚀</button>
+    </div>
+
+    <!-- Layar 4: Akhir -->
+    <div id="screen-final" class="screen">
+        <div class="rocket">🚀</div>
+        <h1 class="final-text">Happy Anniversary<br>13 Agustus! ❤️</h1>
+    </div>
+
+    <!-- Menghubungkan ke file JavaScript -->
+    <script src="script.js"></script>
+</body>
+</html>
