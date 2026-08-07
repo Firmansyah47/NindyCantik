@@ -23,12 +23,12 @@
             position: relative;
         }
 
-        /* Animasi Bintang Latar Belakang */
+        /* --- Animasi Bintang --- */
         .stars {
             position: absolute;
             width: 100%;
             height: 100%;
-            z-index: -1;
+            z-index: -2;
             background: transparent;
         }
         
@@ -44,15 +44,47 @@
             50% { opacity: 1; transform: scale(1.2); }
         }
 
-        /* Container Utama */
+        /* --- Animasi Partikel Love --- */
+        .hearts-container {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+        }
+
+        .heart {
+            position: absolute;
+            color: rgba(255, 77, 77, 0.6); /* Warna merah soft */
+            font-size: 1.5rem;
+            animation: floatUp linear infinite;
+            bottom: -50px;
+        }
+
+        @keyframes floatUp {
+            0% { 
+                transform: translateY(0) scale(0.5) rotate(0deg); 
+                opacity: 0; 
+            }
+            20% {
+                opacity: 1;
+            }
+            100% { 
+                transform: translateY(-110vh) scale(1.5) rotate(360deg); 
+                opacity: 0; 
+            }
+        }
+
+        /* --- Container Utama --- */
         .screen {
-            display: none; /* Disembunyikan secara default */
+            display: none; 
             flex-direction: column;
             align-items: center;
             text-align: center;
             animation: fadeIn 1s ease-in;
             width: 90%;
             max-width: 400px;
+            z-index: 10;
         }
 
         .screen.active {
@@ -64,7 +96,7 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
-        /* Tampilan Layar Login (PIN) */
+        /* --- Tampilan Layar Login (PIN) --- */
         .pin-box {
             background: rgba(255, 255, 255, 0.1);
             padding: 30px;
@@ -106,11 +138,12 @@
         }
 
         .btn:hover {
-            background: #e0e0e0;
+            background: #ff4d4d;
+            color: white;
             transform: scale(1.05);
         }
 
-        /* Tampilan Galeri Foto (Polaroid) */
+        /* --- Tampilan Galeri Foto (Polaroid) --- */
         .polaroid {
             background: white;
             padding: 15px 15px 25px 15px;
@@ -122,9 +155,10 @@
 
         .polaroid img {
             width: 100%;
-            height: 300px;
+            height: 350px;
             object-fit: cover;
             border-radius: 3px;
+            background-color: #eee; /* Kalo foto belum ada, warnanya abu-abu */
         }
 
         .polaroid p {
@@ -134,9 +168,9 @@
             font-style: italic;
         }
 
-        /* Tampilan Akhir (Roket & Teks) */
+        /* --- Tampilan Akhir (Roket & Teks) --- */
         .rocket {
-            font-size: 4rem;
+            font-size: 5rem;
             margin-bottom: 20px;
             animation: flyUp 2s ease-in-out infinite alternate;
         }
@@ -148,8 +182,8 @@
 
         .final-text {
             font-size: 1.8rem;
-            color: #ffd700;
-            text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+            color: #ff4d4d;
+            text-shadow: 0 0 10px rgba(255, 77, 77, 0.5);
             line-height: 1.4;
         }
 
@@ -157,18 +191,18 @@
 </head>
 <body>
 
-    <!-- Latar Belakang Bintang -->
+    <!-- Latar Belakang Bintang & Love -->
     <div class="stars" id="stars-container"></div>
+    <div class="hearts-container" id="hearts-container"></div>
 
     <!-- Layar 1: Masukkan PIN -->
     <div id="screen-login" class="screen active">
         <div class="pin-box">
             <h2>Masukkan Kode Rahasia Kita</h2>
-            <!-- maxLength 4 untuk membatasi 4 digit -->
             <input type="text" id="pin-input" class="pin-input" maxlength="4" placeholder="••••">
             <br>
             <button class="btn" onclick="checkPin()">Buka</button>
-            <p id="error-msg" style="color: #ff4d4d; margin-top: 10px; font-size: 0.9rem; display: none;">Kodenya salah, coba ingat-ingat lagi!</p>
+            <p id="error-msg" style="color: #ff4d4d; margin-top: 10px; font-size: 0.9rem; display: none;">Kodenya salah sayang, coba inget lagi!</p>
         </div>
     </div>
 
@@ -189,36 +223,44 @@
 
     <script>
         // ==========================================
-        // BAGIAN YANG BISA KAMU EDIT
+        // BAGIAN YANG HARUS LU EDIT BRE
         // ==========================================
         
-        // 1. Ubah PIN sesuai tanggal lahir kalian (misal: 01 Januari dan 01 November = "0111")
+        // 1. PIN TANGGAL LAHIR (Bebas ubah 4 digit angkanya)
         const KODE_PIN = "0111";
 
-        // 2. Masukkan foto dan teks yang mau ditampilkan
-        // Pastikan file foto (misal: foto1.jpg) ada di satu folder dengan file html ini
+        // 2. GALERI 5 FOTO (Ubah bagian gambar dan teksnya)
+        // Lu bisa masukin nama file (misal: "foto1.jpg") ATAU link URL langsung.
         const galeri = [
             {
-                gambar: "foto1.jpg", 
-                teks: "Awal cerita kita dimulai..."
+                gambar: "LINK FOTO 1 TARO SINI.jpg", 
+                teks: "Masi inget ga Kita ketemuan di Lumber tycoon sumpah ga nyangka banget😭"
             },
             {
-                gambar: "foto2.jpg", 
-                teks: "Momen lucu pas kita jalan bareng."
+                gambar: "LINK FOTO 2 TARO SINI.jpg", 
+                teks: "Ini jarak aku dan kamu jauh banget ya, tapi kita bisa bertahan buktinyaa🥰"
             },
             {
-                gambar: "foto3.jpg", 
-                teks: "Makasih udah nemenin aku setahun ini ya!"
+                gambar: "LINK FOTO 3 TARO SINI.jpg", 
+                teks: "Ini foto pertama yang kamu kirim, paling akuu sukaaa sampe sekarang ><"
+            },
+            {
+                gambar: "LINK FOTO 4 TARO SINI.jpg", 
+                teks: "Ini pas kita naik gunung Hahahaha, ga nyangka ya udah setahun aja kenangan ini :)"
+            },
+            {
+                gambar: "LINK FOTO 5 TARO SINI.jpg", 
+                teks: "Sayaang aku berterimakasih sama kamu, kalo aku ga ketemu kamu ga mungkin aku bisa sampe sejauh ini, aku dulu itu pemalas banget,Terimakasih udah sama aku :)"
             }
         ];
 
         // ==========================================
-        // LOGIKA PROGRAM (Gak usah diubah)
+        // LOGIKA PROGRAM (Biarin aja gak usah diedit)
         // ==========================================
         
         let currentPhotoIndex = 0;
 
-        // Fungsi Bikin Bintang di Background
+        // Fungsi Bikin Bintang
         function createStars() {
             const starsContainer = document.getElementById('stars-container');
             for (let i = 0; i < 100; i++) {
@@ -232,7 +274,24 @@
                 starsContainer.appendChild(star);
             }
         }
+
+        // Fungsi Bikin Partikel Love Melayang
+        function createHearts() {
+            const heartsContainer = document.getElementById('hearts-container');
+            for (let i = 0; i < 20; i++) {
+                const heart = document.createElement('div');
+                heart.className = 'heart';
+                heart.innerHTML = '❤';
+                heart.style.left = Math.random() * 100 + '%';
+                heart.style.animationDuration = (Math.random() * 5 + 5) + 's'; // Kecepatan melayang 5-10 detik
+                heart.style.animationDelay = (Math.random() * 5) + 's'; // Jeda muncul biar gak barengan
+                heart.style.fontSize = (Math.random() * 15 + 10) + 'px'; // Ukuran love beda-beda
+                heartsContainer.appendChild(heart);
+            }
+        }
+
         createStars();
+        createHearts();
 
         // Fungsi Cek PIN
         function checkPin() {
@@ -256,18 +315,16 @@
         function nextPhoto() {
             currentPhotoIndex++;
             
-            // Kalau foto masih ada, lanjut ke foto berikutnya
             if (currentPhotoIndex < galeri.length) {
                 // Efek animasi simpel pas ganti foto
                 const galleryScreen = document.getElementById('screen-gallery');
                 galleryScreen.style.animation = 'none';
-                galleryScreen.offsetHeight; /* trigger reflow */
+                galleryScreen.offsetHeight; 
                 galleryScreen.style.animation = null; 
                 
                 tampilkanFoto();
-            } 
-            // Kalau foto udah habis, ke layar roket
-            else {
+            } else {
+                // Kalo foto abis (foto ke-5 udah dilewatin), munculin roket
                 document.getElementById('screen-gallery').classList.remove('active');
                 document.getElementById('screen-final').classList.add('active');
             }
@@ -275,4 +332,3 @@
     </script>
 </body>
 </html>
-
