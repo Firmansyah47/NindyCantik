@@ -14,7 +14,7 @@ const PESAN_JARAK = "Sejauh apapun jarak kita, hati aku bakalan selalu ada di se
 // 3. GALERI 5 FOTO
 const galeri = [
     {
-        gambar: "Lumber1.jpg", 
+        gambar: "https://raw.githubusercontent.com/Firmansyah47/NindyCantik/main/Lumber1.jpg", 
         teks: "UBAH TEXT 1 INI"
     },
     {
