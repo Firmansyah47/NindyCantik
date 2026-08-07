@@ -6,32 +6,32 @@
 const KODE_PIN = "0111";
 
 // 2. DATA JARAK DAN LOKASI
-const KOTA_KAMU = "Kaltara";          // Ganti nama kota/lokasi lu
-const KOTA_DIA = "Jember";           // Ganti nama kota/lokasi cewek lu
-const JARAK_KM = 2.233;                  // Masukkan angka jaraknya dalam KM (hanya angka)
+const KOTA_KAMU = "Jakarta";          // Ganti nama kota/lokasi lu
+const KOTA_DIA = "Bandung";           // Ganti nama kota/lokasi cewek lu
+const JARAK_KM = 150;                  // Masukkan angka jaraknya dalam KM (hanya angka)
 const PESAN_JARAK = "Sejauh apapun jarak kita, hati aku bakalan selalu ada di sebelah kamu. Happy 1st Anniversary sayang!";
 
 // 3. GALERI 5 FOTO
 const galeri = [
     {
-        gambar: "https://raw.githubusercontent.com/Firmansyah47/NindyCantik/main/Lumber1.jpg", 
-        teks: "Ini foto kita pas pertama kali ketemu di lumber 😭, Kamu masi inget kan HAHAHAH :)"
+        gambar: "LINK FOTO 1 TARO SINI.jpg", 
+        teks: "UBAH TEXT 1 INI"
     },
     {
-        gambar: "https://raw.githubusercontent.com/Firmansyah47/NindyCantik/main/.jpg", 
-        teks: "Ini juga foto pas kamu maksa aku main ff 😭, padahal aku gengsi aja kalo bukan karna kamu aku gabakalan maen 🥰"
+        gambar: "LINK FOTO 2 TARO SINI.jpg", 
+        teks: "UBAH TEXT 2 INI"
     },
     {
-        gambar: "https://raw.githubusercontent.com/Firmansyah47/NindyCantik/main/.jpg", 
-        teks: ""Ini salah satu foto yang bikin aku naksir kamu, dari awal liat ini itu, kamu keliatan cantik banget aku suka idung kamu, rambut, semuanya deh hehee. kamu cantik sekali sayaang ♡´･ᴗ･`♡"l
+        gambar: "LINK FOTO 3 TARO SINI.jpg", 
+        teks: "UBAH TEXT 3 INI"
     },
     {
-        gambar: "https://raw.githubusercontent.com/Firmansyah47/NindyCantik/main/.jpg", 
-        teks: ""Serius kamu dulu suka sama aku 😭, padahal aku ga pd tau, liat aja deh bocah ingusan ini dapet cewe nya se cantik bidadari :)"
+        gambar: "LINK FOTO 4 TARO SINI.jpg", 
+        teks: "UBAH TEXT 4 INI"
     },
     {
-        gambar: "https://raw.githubusercontent.com/Firmansyah47/NindyCantik/main/.jpg", 
-        teks: ""
+        gambar: "LINK FOTO 5 TARO SINI.jpg", 
+        teks: "UBAH TEXT 5 INI"
     }
 ];
 
