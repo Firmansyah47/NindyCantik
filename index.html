@@ -23,7 +23,7 @@
             position: relative;
         }
 
-        /* --- Animasi Bintang --- */
+        /* --- Background Bintang --- */
         .stars {
             position: absolute;
             width: 100%;
@@ -44,7 +44,7 @@
             50% { opacity: 1; transform: scale(1.2); }
         }
 
-        /* --- Animasi Partikel Love --- */
+        /* --- Background Partikel Love --- */
         .hearts-container {
             position: absolute;
             width: 100%;
@@ -55,24 +55,16 @@
 
         .heart {
             position: absolute;
-            color: rgba(255, 77, 77, 0.6); /* Warna merah soft */
+            color: rgba(255, 77, 77, 0.6);
             font-size: 1.5rem;
             animation: floatUp linear infinite;
             bottom: -50px;
         }
 
         @keyframes floatUp {
-            0% { 
-                transform: translateY(0) scale(0.5) rotate(0deg); 
-                opacity: 0; 
-            }
-            20% {
-                opacity: 1;
-            }
-            100% { 
-                transform: translateY(-110vh) scale(1.5) rotate(360deg); 
-                opacity: 0; 
-            }
+            0% { transform: translateY(0) scale(0.5) rotate(0deg); opacity: 0; }
+            20% { opacity: 1; }
+            100% { transform: translateY(-110vh) scale(1.5) rotate(360deg); opacity: 0; }
         }
 
         /* --- Container Utama --- */
@@ -96,7 +88,7 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
-        /* --- Tampilan Layar Login (PIN) --- */
+        /* --- Layar Login --- */
         .pin-box {
             background: rgba(255, 255, 255, 0.1);
             padding: 30px;
@@ -143,7 +135,7 @@
             transform: scale(1.05);
         }
 
-        /* --- Tampilan Galeri Foto (Polaroid) --- */
+        /* --- Layar Galeri Foto --- */
         .polaroid {
             background: white;
             padding: 15px 15px 25px 15px;
@@ -155,10 +147,10 @@
 
         .polaroid img {
             width: 100%;
-            height: 350px;
+            height: 320px;
             object-fit: cover;
             border-radius: 3px;
-            background-color: #eee; /* Kalo foto belum ada, warnanya abu-abu */
+            background-color: #eee;
         }
 
         .polaroid p {
@@ -168,7 +160,76 @@
             font-style: italic;
         }
 
-        /* --- Tampilan Akhir (Roket & Teks) --- */
+        /* --- Layar Animasi Jarak --- */
+        .distance-card {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 25px 20px;
+            border-radius: 15px;
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            width: 100%;
+            margin-bottom: 20px;
+        }
+
+        .distance-card h2 {
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+        }
+
+        .location-box {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        .city {
+            font-size: 0.9rem;
+            font-weight: bold;
+        }
+
+        .city-icon {
+            font-size: 1.8rem;
+            margin-bottom: 5px;
+        }
+
+        .line-wrapper {
+            flex-grow: 1;
+            margin: 0 15px;
+            position: relative;
+            height: 2px;
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        .moving-heart {
+            position: absolute;
+            top: -12px;
+            left: 0%;
+            font-size: 1.2rem;
+            animation: moveHeart 3s ease-in-out infinite alternate;
+        }
+
+        @keyframes moveHeart {
+            0% { left: 0%; }
+            100% { left: 85%; }
+        }
+
+        .distance-count {
+            font-size: 2.2rem;
+            font-weight: bold;
+            color: #ff4d4d;
+            margin: 15px 0 10px 0;
+            text-shadow: 0 0 10px rgba(255, 77, 77, 0.4);
+        }
+
+        .distance-quote {
+            font-size: 0.95rem;
+            line-height: 1.4;
+            opacity: 0.9;
+        }
+
+        /* --- Layar Akhir --- */
         .rocket {
             font-size: 5rem;
             margin-bottom: 20px;
@@ -191,11 +252,10 @@
 </head>
 <body>
 
-    <!-- Latar Belakang Bintang & Love -->
     <div class="stars" id="stars-container"></div>
     <div class="hearts-container" id="hearts-container"></div>
 
-    <!-- Layar 1: Masukkan PIN -->
+    <!-- Layar 1: PIN -->
     <div id="screen-login" class="screen active">
         <div class="pin-box">
             <h2>Masukkan Kode Rahasia Kita</h2>
@@ -215,7 +275,34 @@
         <button class="btn" onclick="nextPhoto()">Next ➔</button>
     </div>
 
-    <!-- Layar 3: Akhir (Roket & Ucapan) -->
+    <!-- Layar 3: Animasi Jarak -->
+    <div id="screen-distance" class="screen">
+        <div class="distance-card">
+            <h2>Jarak Bukan Penghalang ❤️</h2>
+            
+            <div class="location-box">
+                <div>
+                    <div class="city-icon">📍</div>
+                    <div class="city" id="nama-kota-kamu">KOTA KAMU</div>
+                </div>
+
+                <div class="line-wrapper">
+                    <div class="moving-heart">💖</div>
+                </div>
+
+                <div>
+                    <div class="city-icon">📍</div>
+                    <div class="city" id="nama-kota-dia">KOTA DIA</div>
+                </div>
+            </div>
+
+            <div class="distance-count" id="distance-number">0 KM</div>
+            <p class="distance-quote" id="pesan-jarak">UBAH PESAN JARAK INI</p>
+        </div>
+        <button class="btn" onclick="goToFinal()">Lanjut Ke Ucapan 🚀</button>
+    </div>
+
+    <!-- Layar 4: Akhir -->
     <div id="screen-final" class="screen">
         <div class="rocket">🚀</div>
         <h1 class="final-text">Happy Anniversary<br>13 Agustus! ❤️</h1>
@@ -226,41 +313,45 @@
         // BAGIAN YANG HARUS LU EDIT BRE
         // ==========================================
         
-        // 1. PIN TANGGAL LAHIR (Bebas ubah 4 digit angkanya)
+        // 1. PIN TANGGAL LAHIR
         const KODE_PIN = "0111";
 
-        // 2. GALERI 5 FOTO (Ubah bagian gambar dan teksnya)
-        // Lu bisa masukin nama file (misal: "foto1.jpg") ATAU link URL langsung.
+        // 2. DATA JARAK DAN LOKASI
+        const KOTA_KAMU = "Nunukan";          // Ganti nama kota/lokasi lu
+        const KOTA_DIA = "Jember";           // Ganti nama kota/lokasi cewek lu
+        const JARAK_KM = 2.294                  // Masukkan angka jaraknya dalam KM (hanya angka)
+        const PESAN_JARAK = "Sejauh apapun jarak kita, hati aku bakalan selalu ada di sebelah kamu. Happy 1st Anniversary sayang!";
+
+        // 3. GALERI 5 FOTO
         const galeri = [
             {
                 gambar: "LINK FOTO 1 TARO SINI.jpg", 
-                teks: "Masi inget ga Kita ketemuan di Lumber tycoon sumpah ga nyangka banget😭"
+                teks: "Ini foto kita pas pertama kali naik gunung bareng 😭, Kamu masi inget kan HAHAHAH :)"
             },
             {
                 gambar: "LINK FOTO 2 TARO SINI.jpg", 
-                teks: "Ini jarak aku dan kamu jauh banget ya, tapi kita bisa bertahan buktinyaa🥰"
+                teks: "Ini juga foto pas kamu maksa aku main ff 😭, padahal aku gengsi aja kalo bukan karna kamu aku gabakalan maen 🥰"
             },
             {
                 gambar: "LINK FOTO 3 TARO SINI.jpg", 
-                teks: "Ini foto pertama yang kamu kirim, paling akuu sukaaa sampe sekarang ><"
+                teks: "Ini salah satu foto yang bikin aku naksir kamu, dari awal liat ini itu, kamu keliatan cantik banget aku suka idung kamu, rambut, semuanya deh hehee. kamu cantik sekali sayaang ♡´･ᴗ･`♡"
             },
             {
                 gambar: "LINK FOTO 4 TARO SINI.jpg", 
-                teks: "Ini pas kita naik gunung Hahahaha, ga nyangka ya udah setahun aja kenangan ini :)"
+                teks: "Serius kamu dulu suka sama aku 😭, padahal aku ga pd tau, liat aja deh bocah ingusan ini dapet cewe nya se cantik bidadari :)"
             },
             {
                 gambar: "LINK FOTO 5 TARO SINI.jpg", 
-                teks: "Sayaang aku berterimakasih sama kamu, kalo aku ga ketemu kamu ga mungkin aku bisa sampe sejauh ini, aku dulu itu pemalas banget,Terimakasih udah sama aku :)"
+                teks: "Tapi mau bagaimana pun aku tetap pemenang di hati kamu, Terimakasih yaaa sayaang ku yang cantikkk gemes lucuuuuuu imuttttt, AKU SAYAANG KAMUUUU🤍🥰"
             }
         ];
 
         // ==========================================
-        // LOGIKA PROGRAM (Biarin aja gak usah diedit)
+        // LOGIKA PROGRAM
         // ==========================================
         
         let currentPhotoIndex = 0;
 
-        // Fungsi Bikin Bintang
         function createStars() {
             const starsContainer = document.getElementById('stars-container');
             for (let i = 0; i < 100; i++) {
@@ -275,7 +366,6 @@
             }
         }
 
-        // Fungsi Bikin Partikel Love Melayang
         function createHearts() {
             const heartsContainer = document.getElementById('hearts-container');
             for (let i = 0; i < 20; i++) {
@@ -283,9 +373,9 @@
                 heart.className = 'heart';
                 heart.innerHTML = '❤';
                 heart.style.left = Math.random() * 100 + '%';
-                heart.style.animationDuration = (Math.random() * 5 + 5) + 's'; // Kecepatan melayang 5-10 detik
-                heart.style.animationDelay = (Math.random() * 5) + 's'; // Jeda muncul biar gak barengan
-                heart.style.fontSize = (Math.random() * 15 + 10) + 'px'; // Ukuran love beda-beda
+                heart.style.animationDuration = (Math.random() * 5 + 5) + 's';
+                heart.style.animationDelay = (Math.random() * 5) + 's';
+                heart.style.fontSize = (Math.random() * 15 + 10) + 'px';
                 heartsContainer.appendChild(heart);
             }
         }
@@ -293,7 +383,6 @@
         createStars();
         createHearts();
 
-        // Fungsi Cek PIN
         function checkPin() {
             const input = document.getElementById('pin-input').value;
             if (input === KODE_PIN) {
@@ -305,29 +394,51 @@
             }
         }
 
-        // Fungsi Tampilkan Foto
         function tampilkanFoto() {
             document.getElementById('gallery-img').src = galeri[currentPhotoIndex].gambar;
             document.getElementById('gallery-text').innerText = galeri[currentPhotoIndex].teks;
         }
 
-        // Fungsi Tombol Next
         function nextPhoto() {
             currentPhotoIndex++;
-            
             if (currentPhotoIndex < galeri.length) {
-                // Efek animasi simpel pas ganti foto
                 const galleryScreen = document.getElementById('screen-gallery');
                 galleryScreen.style.animation = 'none';
                 galleryScreen.offsetHeight; 
                 galleryScreen.style.animation = null; 
-                
                 tampilkanFoto();
             } else {
-                // Kalo foto abis (foto ke-5 udah dilewatin), munculin roket
+                // Selesai foto, pindah ke layar jarak
                 document.getElementById('screen-gallery').classList.remove('active');
-                document.getElementById('screen-final').classList.add('active');
+                tampilkanLayarJarak();
+                document.getElementById('screen-distance').classList.add('active');
             }
+        }
+
+        function tampilkanLayarJarak() {
+            document.getElementById('nama-kota-kamu').innerText = KOTA_KAMU;
+            document.getElementById('nama-kota-dia').innerText = KOTA_DIA;
+            document.getElementById('pesan-jarak').innerText = PESAN_JARAK;
+
+            // Animasi Angka Jarak Berjalan (Count Up)
+            let start = 0;
+            const duration = 2000; // 2 detik
+            const counterElement = document.getElementById('distance-number');
+            const stepTime = Math.abs(Math.floor(duration / JARAK_KM));
+            
+            const timer = setInterval(() => {
+                start += Math.ceil(JARAK_KM / 50);
+                if (start >= JARAK_KM) {
+                    start = JARAK_KM;
+                    clearInterval(timer);
+                }
+                counterElement.innerText = start + " KM";
+            }, 30);
+        }
+
+        function goToFinal() {
+            document.getElementById('screen-distance').classList.remove('active');
+            document.getElementById('screen-final').classList.add('active');
         }
     </script>
 </body>
