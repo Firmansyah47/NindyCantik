@@ -1,0 +1,243 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #050510;
+    color: white;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    position: relative;
+}
+
+/* --- Background Bintang --- */
+.stars {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: -2;
+    background: transparent;
+}
+
+.star {
+    position: absolute;
+    background-color: white;
+    border-radius: 50%;
+    animation: twinkle infinite ease-in-out;
+}
+
+@keyframes twinkle {
+    0%, 100% { opacity: 0.2; transform: scale(0.8); }
+    50% { opacity: 1; transform: scale(1.2); }
+}
+
+/* --- Background Partikel Love --- */
+.hearts-container {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    overflow: hidden;
+}
+
+.heart {
+    position: absolute;
+    color: rgba(255, 77, 77, 0.6);
+    font-size: 1.5rem;
+    animation: floatUp linear infinite;
+    bottom: -50px;
+}
+
+@keyframes floatUp {
+    0% { transform: translateY(0) scale(0.5) rotate(0deg); opacity: 0; }
+    20% { opacity: 1; }
+    100% { transform: translateY(-110vh) scale(1.5) rotate(360deg); opacity: 0; }
+}
+
+/* --- Container Utama --- */
+.screen {
+    display: none; 
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    animation: fadeIn 1s ease-in;
+    width: 90%;
+    max-width: 400px;
+    z-index: 10;
+}
+
+.screen.active {
+    display: flex;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* --- Layar Login --- */
+.pin-box {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 30px;
+    border-radius: 15px;
+    backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.pin-box h2 {
+    margin-bottom: 20px;
+    font-size: 1.2rem;
+    letter-spacing: 1px;
+}
+
+.pin-input {
+    width: 150px;
+    padding: 10px;
+    font-size: 2rem;
+    text-align: center;
+    letter-spacing: 10px;
+    border: none;
+    border-bottom: 2px solid white;
+    background: transparent;
+    color: white;
+    outline: none;
+    margin-bottom: 20px;
+}
+
+.btn {
+    background: white;
+    color: #050510;
+    padding: 10px 25px;
+    border: none;
+    border-radius: 25px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.btn:hover {
+    background: #ff4d4d;
+    color: white;
+    transform: scale(1.05);
+}
+
+/* --- Layar Galeri Foto --- */
+.polaroid {
+    background: white;
+    padding: 15px 15px 25px 15px;
+    border-radius: 5px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+    margin-bottom: 25px;
+    width: 100%;
+}
+
+.polaroid img {
+    width: 100%;
+    height: 320px;
+    object-fit: cover;
+    border-radius: 3px;
+    background-color: #eee;
+}
+
+.polaroid p {
+    color: #333;
+    margin-top: 15px;
+    font-size: 1.1rem;
+    font-style: italic;
+}
+
+/* --- Layar Animasi Jarak --- */
+.distance-card {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 25px 20px;
+    border-radius: 15px;
+    backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.distance-card h2 {
+    font-size: 1.3rem;
+    margin-bottom: 20px;
+}
+
+.location-box {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    position: relative;
+}
+
+.city {
+    font-size: 0.9rem;
+    font-weight: bold;
+}
+
+.city-icon {
+    font-size: 1.8rem;
+    margin-bottom: 5px;
+}
+
+.line-wrapper {
+    flex-grow: 1;
+    margin: 0 15px;
+    position: relative;
+    height: 2px;
+    background: rgba(255, 255, 255, 0.3);
+}
+
+.moving-heart {
+    position: absolute;
+    top: -12px;
+    left: 0%;
+    font-size: 1.2rem;
+    animation: moveHeart 3s ease-in-out infinite alternate;
+}
+
+@keyframes moveHeart {
+    0% { left: 0%; }
+    100% { left: 85%; }
+}
+
+.distance-count {
+    font-size: 2.2rem;
+    font-weight: bold;
+    color: #ff4d4d;
+    margin: 15px 0 10px 0;
+    text-shadow: 0 0 10px rgba(255, 77, 77, 0.4);
+}
+
+.distance-quote {
+    font-size: 0.95rem;
+    line-height: 1.4;
+    opacity: 0.9;
+}
+
+/* --- Layar Akhir --- */
+.rocket {
+    font-size: 5rem;
+    margin-bottom: 20px;
+    animation: flyUp 2s ease-in-out infinite alternate;
+}
+
+@keyframes flyUp {
+    from { transform: translateY(0); }
+    to { transform: translateY(-30px); }
+}
+
+.final-text {
+    font-size: 1.8rem;
+    color: #ff4d4d;
+    text-shadow: 0 0 10px rgba(255, 77, 77, 0.5);
+    line-height: 1.4;
+}
+
