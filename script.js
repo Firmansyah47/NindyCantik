@@ -26,7 +26,7 @@ const galeri = [
         teks: "Ini salah satu foto yang bikin aku naksir kamu, dari awal liat ini itu, kamu keliatan cantik banget aku suka idung kamu, rambut, semuanya deh hehee. kamu cantik sekali sayaang ♡´･ᴗ･`♡"
     },
     {
-        gambar: "Lhttps://raw.githubusercontent.com/Firmansyah47/NindyCantik/main/Syg1.jpg", 
+        gambar: "Lhttps://raw.githubusercontent.com/Firmansyah47/NindyCantik/main/Sayang1.jpg", 
         teks: "Serius kamu dulu suka sama aku 😭, padahal aku ga pd tau, liat aja deh bocah ingusan ini dapet cewe nya se cantik bidadari"
     },
     {
