@@ -1,128 +1,686 @@
-// ==========================================
-// BAGIAN YANG HARUS LU EDIT BRE
-// ==========================================
+/* =========================================================
+   SECRET CODE
+========================================================= */
 
-// 1. PIN TANGGAL LAHIR
-const KODE_PIN = "0111";
+/*
+   GANTI PASSWORD DI SINI.
 
-// 2. DATA JARAK DAN LOKASI
-const KOTA_KAMU = "Kaltrara";          // Ganti nama kota/lokasi lu
-const KOTA_DIA = "Jember";           // Ganti nama kota/lokasi cewek lu
-const JARAK_KM = 233;                  // Masukkan angka jaraknya dalam KM (hanya angka)
-const PESAN_JARAK = "Sejauh apapun jarak kita, hati aku bakalan selalu ada di sebelah kamu. Happy 1st Anniversary sayang!";
+   Contoh:
 
-// 3. GALERI 5 FOTO
-const galeri = [
-    {
-        gambar: "https://raw.githubusercontent.com/Firmansyah47/NindyCantik/main/Lumber1.jpg", 
-        teks: "Ini foto kita pas pertama kali ketemu di lumber 😭, Kamu masi inget kan HAHAHAH"
-    },
-    {
-        gambar: "https://raw.githubusercontent.com/Firmansyah47/NindyCantik/main/Turok1.jpg", 
-        teks: "Ini juga foto pas kamu maksa aku main ff 😭, padahal aku gengsi aja kalo bukan karna kamu aku gabakalan maen 🥰"
-    },
-    {
-        gambar: "https://raw.githubusercontent.com/Firmansyah47/NindyCantik/main/Gunung1.jpg", 
-        teks: "Ini salah satu foto yang bikin aku naksir kamu, dari awal liat ini itu, kamu keliatan cantik banget aku suka idung kamu, rambut, semuanya deh hehee. kamu cantik sekali sayaang ♡´･ᴗ･`♡"
-    },
-    {
-        gambar: "Lhttps://raw.githubusercontent.com/Firmansyah47/NindyCantik/main/Sayang1.jpg", 
-        teks: "Serius kamu dulu suka sama aku 😭, padahal aku ga pd tau, liat aja deh bocah ingusan ini dapet cewe nya se cantik bidadari"
-    },
-    {
-        gambar: "https://raw.githubusercontent.com/Firmansyah47/NindyCantik/main/Jember1.jpg", 
-        teks: "UBAH TEXT 5 INI"
-    }
+   const SECRET_CODE = "NINDY2026";
+*/
+
+const SECRET_CODE = "12345";
+
+
+/* =========================================================
+   ELEMENT PAGE
+========================================================= */
+
+const gardenPage =
+    document.getElementById("gardenPage");
+
+const albumPage =
+    document.getElementById("albumPage");
+
+const messagePage =
+    document.getElementById("messagePage");
+
+const birthdayBook =
+    document.getElementById("birthdayBook");
+
+const secretCodeInput =
+    document.getElementById("secretCode");
+
+const openBookButton =
+    document.getElementById("openBook");
+
+const codeMessage =
+    document.getElementById("codeMessage");
+
+const nextPage =
+    document.getElementById("nextPage");
+
+const flowers =
+    document.getElementById("flowers");
+
+const butterflies =
+    document.getElementById("butterflies");
+
+const fireflies =
+    document.getElementById("fireflies");
+
+const messageDecorations =
+    document.getElementById(
+        "messageDecorations"
+    );
+
+
+/* =========================================================
+   BUNGA TAMAN PAGE 1
+========================================================= */
+
+const flowerPositions = [
+
+    [4, 12],
+    [10, 7],
+    [18, 15],
+    [25, 5],
+    [32, 10],
+    [40, 4],
+    [60, 8],
+    [68, 14],
+    [75, 5],
+    [83, 11],
+    [91, 6],
+    [96, 16]
+
 ];
 
-// ==========================================
-// LOGIKA PROGRAM
-// ==========================================
+flowerPositions.forEach(
+    ([left, bottom]) => {
 
-let currentPhotoIndex = 0;
+        const flower =
+            document.createElement("div");
 
-function createStars() {
-    const starsContainer = document.getElementById('stars-container');
-    for (let i = 0; i < 100; i++) {
-        const star = document.createElement('div');
-        star.className = 'star';
-        star.style.width = Math.random() * 3 + 'px';
-        star.style.height = star.style.width;
-        star.style.left = Math.random() * 100 + '%';
-        star.style.top = Math.random() * 100 + '%';
-        star.style.animationDuration = (Math.random() * 3 + 2) + 's';
-        starsContainer.appendChild(star);
+        flower.className =
+            "flower";
+
+        flower.style.left =
+            left + "%";
+
+        flower.style.bottom =
+            bottom + "%";
+
+        flower.style.animationDelay =
+            Math.random() * 2 + "s";
+
+
+        const head =
+            document.createElement("div");
+
+        head.className =
+            "flower-head";
+
+
+        const stem =
+            document.createElement("div");
+
+        stem.className =
+            "flower-stem";
+
+
+        flower.appendChild(head);
+
+        flower.appendChild(stem);
+
+        flowers.appendChild(flower);
+
     }
+);
+
+
+/* =========================================================
+   KUPU-KUPU PAGE 1
+========================================================= */
+
+for (
+    let i = 0;
+    i < 3;
+    i++
+) {
+
+    const butterfly =
+        document.createElement("div");
+
+    butterfly.className =
+        "butterfly";
+
+    butterfly.textContent =
+        "🦋";
+
+    butterfly.style.top =
+        30 + i * 13 + "%";
+
+    butterfly.style.left =
+        -10 - i * 8 + "%";
+
+    butterfly.style.animationDuration =
+        9 + i * 3 + "s";
+
+    butterfly.style.animationDelay =
+        i * 3 + "s";
+
+    butterflies.appendChild(
+        butterfly
+    );
 }
 
-function createHearts() {
-    const heartsContainer = document.getElementById('hearts-container');
-    for (let i = 0; i < 20; i++) {
-        const heart = document.createElement('div');
-        heart.className = 'heart';
-        heart.innerHTML = '❤';
-        heart.style.left = Math.random() * 100 + '%';
-        heart.style.animationDuration = (Math.random() * 5 + 5) + 's';
-        heart.style.animationDelay = (Math.random() * 5) + 's';
-        heart.style.fontSize = (Math.random() * 15 + 10) + 'px';
-        heartsContainer.appendChild(heart);
-    }
+
+/* =========================================================
+   KUNANG-KUNANG PAGE 1
+========================================================= */
+
+for (
+    let i = 0;
+    i < 35;
+    i++
+) {
+
+    const firefly =
+        document.createElement("span");
+
+    firefly.className =
+        "firefly";
+
+    firefly.style.left =
+        Math.random() * 100 + "%";
+
+    firefly.style.top =
+        45 + Math.random() * 50 + "%";
+
+    firefly.style.animationDuration =
+        Math.random() * 2 + 1.5 + "s";
+
+    firefly.style.animationDelay =
+        Math.random() * 3 + "s";
+
+    fireflies.appendChild(
+        firefly
+    );
 }
 
-createStars();
-createHearts();
 
-function checkPin() {
-    const input = document.getElementById('pin-input').value;
-    if (input === KODE_PIN) {
-        document.getElementById('screen-login').classList.remove('active');
-        tampilkanFoto();
-        document.getElementById('screen-gallery').classList.add('active');
+/* =========================================================
+   BUNGA KECIL TAMBAHAN
+========================================================= */
+
+for (
+    let i = 0;
+    i < 20;
+    i++
+) {
+
+    const tinyFlower =
+        document.createElement("span");
+
+    tinyFlower.textContent =
+        Math.random() > .5
+            ? "✿"
+            : "✾";
+
+    tinyFlower.style.position =
+        "absolute";
+
+    tinyFlower.style.left =
+        Math.random() * 100 + "%";
+
+    tinyFlower.style.top =
+        65 + Math.random() * 30 + "%";
+
+    tinyFlower.style.color =
+        Math.random() > .5
+            ? "#fff0a8"
+            : "#ffb5c9";
+
+    tinyFlower.style.fontSize =
+        Math.random() * 12 + 8 + "px";
+
+    tinyFlower.style.opacity =
+        ".7";
+
+    flowers.appendChild(
+        tinyFlower
+    );
+}
+
+
+/* =========================================================
+   DEKORASI PAGE 3
+========================================================= */
+
+const messageDecorIcons = [
+    "🌸",
+    "🌼",
+    "🌷",
+    "🌻",
+    "🦋",
+    "✿",
+    "✾",
+    "🌿"
+];
+
+for (
+    let i = 0;
+    i < 30;
+    i++
+) {
+
+    const decoration =
+        document.createElement("span");
+
+    decoration.textContent =
+        messageDecorIcons[
+            Math.floor(
+                Math.random() *
+                messageDecorIcons.length
+            )
+        ];
+
+    decoration.style.position =
+        "absolute";
+
+    decoration.style.left =
+        Math.random() * 100 + "%";
+
+    decoration.style.top =
+        Math.random() * 100 + "%";
+
+    decoration.style.fontSize =
+        12 + Math.random() * 22 + "px";
+
+    decoration.style.opacity =
+        .25 + Math.random() * .4;
+
+    decoration.style.animation =
+        `messageDecorationFloat ${
+            3 + Math.random() * 4
+        }s ease-in-out infinite alternate`;
+
+    decoration.style.animationDelay =
+        Math.random() * 3 + "s";
+
+    messageDecorations.appendChild(
+        decoration
+    );
+}
+
+
+/* =========================================================
+   ANIMASI DEKORASI PAGE 3
+========================================================= */
+
+const decorationStyle =
+    document.createElement("style");
+
+decorationStyle.textContent = `
+
+@keyframes messageDecorationFloat {
+
+    from {
+
+        transform:
+            translateY(0)
+            rotate(-5deg);
+
+    }
+
+    to {
+
+        transform:
+            translateY(-18px)
+            rotate(5deg);
+
+    }
+
+}
+
+`;
+
+document.head.appendChild(
+    decorationStyle
+);
+
+
+/* =========================================================
+   SECRET CODE
+========================================================= */
+
+function checkSecretCode() {
+
+    const enteredCode =
+        secretCodeInput.value.trim();
+
+
+    if (
+        enteredCode === SECRET_CODE
+    ) {
+
+        codeMessage.textContent =
+            "✨ Secret unlocked...";
+
+        codeMessage.style.color =
+            "#fff6bd";
+
+        openBookButton.disabled =
+            true;
+
+        secretCodeInput.disabled =
+            true;
+
+
+        birthdayBook.style.animation =
+            "none";
+
+        birthdayBook.style.transition =
+            "1s ease";
+
+        birthdayBook.style.transform =
+            "translate(-50%, -50%) scale(1.12) rotateY(10deg)";
+
+        birthdayBook.style.opacity =
+            "0";
+
+
+        setTimeout(
+            () => {
+
+                gardenPage.style.opacity =
+                    "0";
+
+                gardenPage.style.visibility =
+                    "hidden";
+
+            },
+            700
+        );
+
+
+        setTimeout(
+            () => {
+
+                gardenPage.style.display =
+                    "none";
+
+                albumPage.style.display =
+                    "block";
+
+                window.scrollTo(
+                    0,
+                    0
+                );
+
+                requestAnimationFrame(
+                    () => {
+
+                        albumPage.style.opacity =
+                            "1";
+
+                    }
+                );
+
+            },
+            1100
+        );
+
     } else {
-        document.getElementById('error-msg').style.display = 'block';
+
+        codeMessage.textContent =
+            "🌸 Hmm... secret code-nya belum benar.";
+
+        codeMessage.style.color =
+            "#fff0a8";
+
+
+        secretCodeInput.animate(
+
+            [
+                {
+                    transform:
+                        "translateX(0)"
+                },
+
+                {
+                    transform:
+                        "translateX(-8px)"
+                },
+
+                {
+                    transform:
+                        "translateX(8px)"
+                },
+
+                {
+                    transform:
+                        "translateX(-5px)"
+                },
+
+                {
+                    transform:
+                        "translateX(5px)"
+                },
+
+                {
+                    transform:
+                        "translateX(0)"
+                }
+
+            ],
+
+            {
+                duration: 400
+            }
+
+        );
+
+        secretCodeInput.select();
+
     }
+
 }
 
-function tampilkanFoto() {
-    document.getElementById('gallery-img').src = galeri[currentPhotoIndex].gambar;
-    document.getElementById('gallery-text').innerText = galeri[currentPhotoIndex].teks;
-}
 
-function nextPhoto() {
-    currentPhotoIndex++;
-    if (currentPhotoIndex < galeri.length) {
-        const galleryScreen = document.getElementById('screen-gallery');
-        galleryScreen.style.animation = 'none';
-        galleryScreen.offsetHeight; 
-        galleryScreen.style.animation = null; 
-        tampilkanFoto();
-    } else {
-        document.getElementById('screen-gallery').classList.remove('active');
-        tampilkanLayarJarak();
-        document.getElementById('screen-distance').classList.add('active');
-    }
-}
+/* =========================================================
+   BUTTON OPEN BOOK
+========================================================= */
 
-function tampilkanLayarJarak() {
-    document.getElementById('nama-kota-kamu').innerText = KOTA_KAMU;
-    document.getElementById('nama-kota-dia').innerText = KOTA_DIA;
-    document.getElementById('pesan-jarak').innerText = PESAN_JARAK;
+openBookButton.addEventListener(
+    "click",
+    checkSecretCode
+);
 
-    let start = 0;
-    const duration = 2000;
-    const counterElement = document.getElementById('distance-number');
-    
-    const timer = setInterval(() => {
-        start += Math.ceil(JARAK_KM / 50);
-        if (start >= JARAK_KM) {
-            start = JARAK_KM;
-            clearInterval(timer);
+
+/* =========================================================
+   ENTER PASSWORD
+========================================================= */
+
+secretCodeInput.addEventListener(
+    "keydown",
+    (event) => {
+
+        if (
+            event.key === "Enter"
+        ) {
+
+            checkSecretCode();
+
         }
-        counterElement.innerText = start + " KM";
-    }, 30);
+
+    }
+);
+
+
+/* =========================================================
+   PHOTO POPUP
+========================================================= */
+
+const photoPopup =
+    document.getElementById(
+        "photoPopup"
+    );
+
+const popupImage =
+    document.getElementById(
+        "popupImage"
+    );
+
+const popupCaption =
+    document.getElementById(
+        "popupCaption"
+    );
+
+const closePopup =
+    document.getElementById(
+        "closePopup"
+    );
+
+
+const galleryPhotos =
+    document.querySelectorAll(
+        ".photo-frame img"
+    );
+
+
+/* BUKA FOTO */
+
+galleryPhotos.forEach(
+    (photo) => {
+
+        photo.addEventListener(
+            "click",
+            function () {
+
+                popupImage.src =
+                    this.src;
+
+                popupImage.alt =
+                    this.alt;
+
+                popupCaption.textContent =
+                    this.dataset.caption ||
+                    this.alt ||
+                    "A beautiful memory ♡";
+
+                photoPopup.classList.add(
+                    "active"
+                );
+
+                document.body.style.overflow =
+                    "hidden";
+
+            }
+        );
+
+    }
+);
+
+
+/* TUTUP FOTO */
+
+function closePhotoPopup() {
+
+    photoPopup.classList.remove(
+        "active"
+    );
+
+    document.body.style.overflow =
+        "";
+
+    setTimeout(
+        () => {
+
+            if (
+                !photoPopup.classList.contains(
+                    "active"
+                )
+            ) {
+
+                popupImage.src =
+                    "";
+
+            }
+
+        },
+        400
+    );
 }
 
-function goToFinal() {
-    document.getElementById('screen-distance').classList.remove('active');
-    document.getElementById('screen-final').classList.add('active');
-}
+
+closePopup.addEventListener(
+    "click",
+    closePhotoPopup
+);
+
+
+/* KLIK BACKGROUND */
+
+photoPopup.addEventListener(
+    "click",
+    function (event) {
+
+        if (
+            event.target ===
+            photoPopup
+        ) {
+
+            closePhotoPopup();
+
+        }
+
+    }
+);
+
+
+/* ESC */
+
+document.addEventListener(
+    "keydown",
+    function (event) {
+
+        if (
+            event.key === "Escape" &&
+            photoPopup.classList.contains(
+                "active"
+            )
+        ) {
+
+            closePhotoPopup();
+
+        }
+
+    }
+);
+
+
+/* =========================================================
+   PAGE 2 → PAGE 3
+========================================================= */
+
+nextPage.addEventListener(
+    "click",
+    () => {
+
+        albumPage.style.opacity =
+            "0";
+
+
+        setTimeout(
+            () => {
+
+                albumPage.style.display =
+                    "none";
+
+                messagePage.style.display =
+                    "block";
+
+                window.scrollTo(
+                    0,
+                    0
+                );
+
+
+                requestAnimationFrame(
+                    () => {
+
+                        messagePage.style.opacity =
+                            "1";
+
+                    }
+                );
+
+            },
+            800
+        );
+
+    }
+);
