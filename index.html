@@ -3,71 +3,478 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Happy Anniversary!</title>
-    
-    <!-- Menghubungkan ke file CSS -->
+
+    <title>A Little Birthday Garden</title>
+
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
-    <!-- Latar Belakang Bintang & Love -->
-    <div class="stars" id="stars-container"></div>
-    <div class="hearts-container" id="hearts-container"></div>
+    <!-- =====================================================
+         PAGE 1 — TAMAN + BUKU
+    ====================================================== -->
 
-    <!-- Layar 1: PIN -->
-    <div id="screen-login" class="screen active">
-        <div class="pin-box">
-            <h2>Masukkan Kode Rahasia Kita</h2>
-            <input type="text" id="pin-input" class="pin-input" maxlength="4" placeholder="••••">
-            <br>
-            <button class="btn" onclick="checkPin()">Buka</button>
-            <p id="error-msg" style="color: #ff4d4d; margin-top: 10px; font-size: 0.9rem; display: none;">Kodenya salah sayang, coba inget lagi!</p>
+    <main id="gardenPage" class="garden">
+
+        <div class="sun"></div>
+
+        <!-- AWAN -->
+        <div class="cloud cloud-1"></div>
+        <div class="cloud cloud-2"></div>
+        <div class="cloud cloud-3"></div>
+
+        <!-- BURUNG -->
+        <div class="bird bird-1">⌁</div>
+        <div class="bird bird-2">⌁</div>
+        <div class="bird bird-3">⌁</div>
+
+        <!-- POHON -->
+        <div class="tree tree-left">
+            <div class="tree-top"></div>
+            <div class="tree-trunk"></div>
         </div>
-    </div>
 
-    <!-- Layar 2: Galeri Foto -->
-    <div id="screen-gallery" class="screen">
-        <div class="polaroid">
-            <img id="gallery-img" src="" alt="Foto Kita">
-            <p id="gallery-text"></p>
+        <div class="tree tree-right">
+            <div class="tree-top"></div>
+            <div class="tree-trunk"></div>
         </div>
-        <button class="btn" onclick="nextPhoto()">Next ➔</button>
-    </div>
 
-    <!-- Layar 3: Animasi Jarak -->
-    <div id="screen-distance" class="screen">
-        <div class="distance-card">
-            <h2>Jarak Bukan Penghalang ❤️</h2>
-            
-            <div class="location-box">
-                <div>
-                    <div class="city-icon">📍</div>
-                    <div class="city" id="nama-kota-kamu">KOTA KAMU</div>
+        <div class="grass-back"></div>
+        <div class="garden-path"></div>
+        <div class="grass-front"></div>
+
+        <div id="flowers"></div>
+        <div id="butterflies"></div>
+        <div id="fireflies"></div>
+
+
+        <!-- BUKU -->
+
+        <section class="birthday-book" id="birthdayBook">
+
+            <div class="book-shadow"></div>
+
+            <div class="book-cover">
+
+                <div class="book-decoration top-left">
+                    🌼
                 </div>
 
-                <div class="line-wrapper">
-                    <div class="moving-heart">💖</div>
+                <div class="book-decoration top-right">
+                    🌸
                 </div>
 
-                <div>
-                    <div class="city-icon">📍</div>
-                    <div class="city" id="nama-kota-dia">KOTA DIA</div>
+                <div class="book-decoration bottom-left">
+                    🌷
                 </div>
+
+                <div class="book-decoration bottom-right">
+                    🌻
+                </div>
+
+                <div class="book-ribbon"></div>
+
+
+                <div class="book-content">
+
+                    <div class="book-small-title">
+                        A LITTLE
+                    </div>
+
+                    <h1>Secret</h1>
+
+                    <div class="book-flower">
+                        🌸
+                    </div>
+
+                    <p class="book-subtitle">
+                        A special little book<br>
+                        made just for you
+                    </p>
+
+                    <div class="code-title">
+                        SECRET CODE
+                    </div>
+
+                    <input
+                        type="password"
+                        id="secretCode"
+                        placeholder="Enter the secret code"
+                        autocomplete="off"
+                    >
+
+                    <button id="openBook">
+                        🔓 Open Book
+                    </button>
+
+                    <p
+                        id="codeMessage"
+                        class="code-message"
+                    ></p>
+
+                </div>
+
             </div>
 
-            <div class="distance-count" id="distance-number">0 KM</div>
-            <p class="distance-quote" id="pesan-jarak">UBAH PESAN JARAK INI</p>
+        </section>
+
+    </main>
+
+
+
+    <!-- =====================================================
+         PAGE 2 — ALBUM
+    ====================================================== -->
+
+    <main id="albumPage" class="album-page">
+
+        <div class="album-background-glow glow-a"></div>
+        <div class="album-background-glow glow-b"></div>
+
+        <div class="album-flower flower-a">🌸</div>
+        <div class="album-flower flower-b">🌼</div>
+        <div class="album-flower flower-c">🌷</div>
+        <div class="album-flower flower-d">🌻</div>
+
+
+        <section class="album-container">
+
+            <header class="album-header">
+
+                <span class="album-small-title">
+                    OUR LITTLE MEMORIES
+                </span>
+
+                <h2>Photo Album</h2>
+
+                <p>
+                    Some beautiful moments worth remembering ♡
+                </p>
+
+            </header>
+
+
+            <!-- FOTO 1 -->
+
+            <div class="photo-grid">
+
+                <div class="photo-card card-1">
+
+                    <div class="photo-frame">
+
+                        <img
+                            src="foto1.jpg"
+                            alt="Foto kenangan 1"
+                            data-caption="Sebuah momen kecil yang layak untuk selalu dikenang ♡"
+                        >
+
+                        <div class="placeholder-text">
+                            FOTO 1
+                        </div>
+
+                    </div>
+
+                    <div class="photo-caption">
+                        ✿ A beautiful moment
+                    </div>
+
+                </div>
+
+
+                <!-- FOTO 2 -->
+
+                <div class="photo-card card-2">
+
+                    <div class="photo-frame">
+
+                        <img
+                            src="foto2.jpg"
+                            alt="Foto kenangan 2"
+                            data-caption="Senyum sederhana yang membuat hari menjadi lebih indah 🌸"
+                        >
+
+                        <div class="placeholder-text">
+                            FOTO 2
+                        </div>
+
+                    </div>
+
+                    <div class="photo-caption">
+                        🌸 A happy memory
+                    </div>
+
+                </div>
+
+
+                <!-- FOTO 3 -->
+
+                <div class="photo-card card-3">
+
+                    <div class="photo-frame">
+
+                        <img
+                            src="foto3.jpg"
+                            alt="Foto kenangan 3"
+                            data-caption="Satu lagi kenangan yang tidak boleh hilang begitu saja 🌷"
+                        >
+
+                        <div class="placeholder-text">
+                            FOTO 3
+                        </div>
+
+                    </div>
+
+                    <div class="photo-caption">
+                        🌷 A special day
+                    </div>
+
+                </div>
+
+
+                <!-- FOTO 4 -->
+
+                <div class="photo-card card-4">
+
+                    <div class="photo-frame">
+
+                        <img
+                            src="foto4.jpg"
+                            alt="Foto kenangan 4"
+                            data-caption="Karena beberapa momen memang pantas disimpan selamanya 🌼"
+                        >
+
+                        <div class="placeholder-text">
+                            FOTO 4
+                        </div>
+
+                    </div>
+
+                    <div class="photo-caption">
+                        🌼 Keep this memory
+                    </div>
+
+                </div>
+
+
+                <!-- FOTO 5 -->
+
+                <div class="photo-card card-5">
+
+                    <div class="photo-frame">
+
+                        <img
+                            src="foto5.jpg"
+                            alt="Foto kenangan 5"
+                            data-caption="One of those moments that deserves a place in this little album 🌻"
+                        >
+
+                        <div class="placeholder-text">
+                            FOTO 5
+                        </div>
+
+                    </div>
+
+                    <div class="photo-caption">
+                        🌻 One of my favorites
+                    </div>
+
+                </div>
+
+
+                <!-- FOTO 6 -->
+
+                <div class="photo-card card-6">
+
+                    <div class="photo-frame">
+
+                        <img
+                            src="foto6.jpg"
+                            alt="Foto kenangan 6"
+                            data-caption="A little happiness captured in one picture 🦋"
+                        >
+
+                        <div class="placeholder-text">
+                            FOTO 6
+                        </div>
+
+                    </div>
+
+                    <div class="photo-caption">
+                        🦋 A little happiness
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- TOMBOL KE HALAMAN TERAKHIR -->
+
+            <div class="next-page-area">
+
+                <button
+                    id="nextPage"
+                    class="next-page-button"
+                >
+                    Continue ♡
+                    <span>→</span>
+                </button>
+
+            </div>
+
+
+            <div class="album-footer">
+                Made with ♡
+            </div>
+
+        </section>
+
+    </main>
+
+
+
+    <!-- =====================================================
+         PAGE 3 — UCAPAN FULL SCREEN
+    ====================================================== -->
+
+    <main id="messagePage" class="message-page">
+
+        <!-- BACKGROUND TAMAN -->
+
+        <div class="message-sky"></div>
+
+        <div class="message-sun"></div>
+
+        <div class="message-cloud message-cloud-1"></div>
+        <div class="message-cloud message-cloud-2"></div>
+
+        <!-- POHON -->
+
+        <div class="message-tree tree-message-left">
+            <div class="message-tree-leaves"></div>
+            <div class="message-tree-trunk"></div>
         </div>
-        <button class="btn" onclick="goToFinal()">Lanjut Ke Ucapan 🚀</button>
+
+        <div class="message-tree tree-message-right">
+            <div class="message-tree-leaves"></div>
+            <div class="message-tree-trunk"></div>
+        </div>
+
+
+        <!-- RUMPUT -->
+
+        <div class="message-grass"></div>
+
+        <!-- DEKORASI -->
+
+        <div id="messageDecorations"></div>
+
+
+        <!-- UCAPAN -->
+
+        <section class="birthday-message">
+
+            <div class="message-small-title">
+                A LITTLE MESSAGE FOR YOU
+            </div>
+
+            <div class="message-line"></div>
+
+            <h2>
+                Happy Birthday
+            </h2>
+
+            <div class="message-name">
+                ♡
+            </div>
+
+            <p>
+                Selamat ulang tahun! 🎂
+            </p>
+
+            <p>
+                Semoga di usia yang baru ini,
+                semakin banyak hal baik yang datang
+                dan semakin banyak alasan untuk tersenyum.
+            </p>
+
+            <p>
+                Semoga semua harapan,
+                impian, dan hal-hal baik
+                yang sedang kamu perjuangkan
+                perlahan bisa menjadi kenyataan.
+            </p>
+
+            <p>
+                Tetap menjadi dirimu sendiri,
+                tetap semangat,
+                dan jangan lupa menikmati
+                setiap perjalanan yang kamu jalani.
+            </p>
+
+            <div class="message-ending">
+                Have a beautiful day ♡
+            </div>
+
+            <div class="message-cake">
+                🎂
+            </div>
+
+        </section>
+
+
+        <!-- LOVE MELAYANG -->
+
+        <div class="floating-heart heart-1">♡</div>
+        <div class="floating-heart heart-2">♡</div>
+        <div class="floating-heart heart-3">♡</div>
+        <div class="floating-heart heart-4">♡</div>
+        <div class="floating-heart heart-5">♡</div>
+
+    </main>
+
+
+
+    <!-- =====================================================
+         POPUP FOTO
+    ====================================================== -->
+
+    <div
+        id="photoPopup"
+        class="photo-popup"
+    >
+
+        <div class="popup-content">
+
+            <button
+                id="closePopup"
+                class="close-popup"
+            >
+                ×
+            </button>
+
+            <div class="popup-photo-wrapper">
+
+                <img
+                    id="popupImage"
+                    src=""
+                    alt="Foto diperbesar"
+                >
+
+            </div>
+
+            <div
+                id="popupCaption"
+                class="popup-caption"
+            ></div>
+
+        </div>
+
     </div>
 
-    <!-- Layar 4: Akhir -->
-    <div id="screen-final" class="screen">
-        <div class="rocket">🚀</div>
-        <h1 class="final-text">Happy Anniversary<br>13 Agustus! ❤️</h1>
-    </div>
 
-    <!-- Menghubungkan ke file JavaScript -->
     <script src="script.js"></script>
+
 </body>
 </html>
